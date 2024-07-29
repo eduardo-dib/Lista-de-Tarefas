@@ -25,7 +25,7 @@ public class CategoriaController {
 
     public Categoria buscarCategoria(String nome) {
         return categorias.stream()
-                .filter(p -> p.getNome().trim().equalsIgnoreCase(nome.trim()))
+                .filter(c -> c.getNome().trim().equalsIgnoreCase(nome.trim()))
                 .findFirst()
                 .orElse(null);
     }

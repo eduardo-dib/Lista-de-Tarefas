@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Tarefa {
 
-
+    private static int proximoId = 1;
     private int id;
     private String titulo;
     private String descricao;
@@ -12,8 +12,8 @@ public class Tarefa {
     private Categoria categoria;
     private String status;
 
-    public Tarefa(String titulo, String descricao, LocalDateTime criadoEm, Categoria categoria, String status) {
-        this.id = id;
+    public Tarefa(String titulo, String descricao, Categoria categoria) {
+        this.id = proximoId++;
         this.titulo = titulo;
         this.descricao = descricao;
         this.criadoEm = LocalDateTime.now();
@@ -72,6 +72,6 @@ public class Tarefa {
     @Override
     public String toString() {
         return "Tarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", criadoEm=" + criadoEm
-                + ", categoria=" + categoria + ", status=" + status + "]";
+                + ", categoria=" + categoria.getNome() + ", status=" + status + "]";
     }
 }
