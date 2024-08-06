@@ -71,7 +71,7 @@ public class Tarefa {
 
     @Override
     public String toString() {
-        return "Tarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", criadoEm=" + criadoEm
+        return "\nTarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", criadoEm=" + criadoEm
                 + ", categoria=" + categoria.getNome() + ", status=" + status + "]";
     }
 }

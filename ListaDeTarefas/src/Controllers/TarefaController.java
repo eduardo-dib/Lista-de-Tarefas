@@ -1,6 +1,9 @@
 package Controllers;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import Models.*;
 public class TarefaController {
@@ -67,6 +70,40 @@ public class TarefaController {
        findFirst().
        orElse(null);
     }
+
+    public Tarefa buscarTarefaPorId(int id){
+        return tarefas.stream().
+        filter(c -> c.getId() == id).
+        findFirst().
+        orElse(null);
+     }
+
+    public List<Tarefa> buscarTarefasPorPalavraChave(String palavraChave) {
+    return tarefas.stream()
+        .filter(t -> t.getDescricao().contains(palavraChave))
+        .collect(Collectors.toList());
+    }
+
+    public List<Tarefa> buscarTarefaPorData(LocalDateTime data) {
+        LocalDate targetDate = data.toLocalDate();
+        List<Tarefa> tarefasEncontradas = tarefas.stream()
+                .filter(c -> c.getCriadoEm().toLocalDate().equals(targetDate))
+                .toList();
+
+        return tarefasEncontradas;
+    }
+
+    public List<Tarefa> buscarTarefasPorCategoria(Categoria categoria) {
+        return tarefas.stream()
+            .filter(t -> t.getCategoria().equals(categoria))
+            .collect(Collectors.toList());
+        }
+    public List<Tarefa> buscarTarefasPorStatus(String status) {
+        return tarefas.stream()
+            .filter(t -> t.getStatus().trim().equalsIgnoreCase(status))
+            .collect(Collectors.toList());
+        }
+ 
 
     public List<Tarefa> listaTarefas(){
         return tarefas;

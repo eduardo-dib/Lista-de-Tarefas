@@ -1,10 +1,14 @@
+import java.time.LocalDateTime;
+
 import Controllers.*;
 import Models.*;
 
+
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         CategoriaController controller = new CategoriaController();
         TarefaController tarefaController = new TarefaController();
+
 
 
         
@@ -19,8 +23,9 @@ public class App {
         String resultado2 = controller.cadastrarCategoria(cat2);
         System.out.println(resultado2);  
 
-        Tarefa tar1 = new Tarefa("Passear com o cachorro","brah",  cat1);
+        Tarefa tar1 = new Tarefa("Passear com o cachorro","brodis",  cat1);
         Tarefa tar2 = new Tarefa("Aprender Guitarra","brah",  cat2);
+        Tarefa tar3 = new Tarefa("Passear com o gato","bros",  cat2);
 
 
         
@@ -30,7 +35,6 @@ public class App {
         
         System.out.println(controller.listarCategorias());
 
-        System.out.println(controller.atualizarCategoria("Trabalho", "Pessoal"));
          
 
         System.out.println(controller.cadastrarCategoria(cat3));
@@ -44,6 +48,7 @@ public class App {
         System.out.println(tarefaController.adicionarTarefa(tar1));
 
         System.out.println(tarefaController.adicionarTarefa(tar2));
+        System.out.println(tarefaController.adicionarTarefa(tar3));
 
 
         System.out.println(tarefaController.buscarTarefa("Passear com o cachorro"));
@@ -59,6 +64,27 @@ public class App {
         System.out.println(tar2);
         tarefaController.atualizarTarefaStatus("Aprender Guitarra");
         System.out.println(tar2);
+
+        System.out.println(controller.buscarCategoriaPorId(1));
+        System.out.println(controller.buscarCategoriaPorId(2));
+        System.out.println(controller.buscarCategoriaPorId(3));
+        System.out.println(controller.listarCategorias());
+        String dataStr = "2024-08-06T19:18:58.428171100";
+        LocalDateTime data = LocalDateTime.parse(dataStr);
+        System.out.println(controller.buscarCategoriaPorData(data));
+        System.out.println(tarefaController.buscarTarefaPorId(1));
+        System.out.println(tarefaController.buscarTarefaPorId(2));
+        System.out.println(tarefaController.buscarTarefaPorId(3));
+        System.out.println(tarefaController.buscarTarefasPorPalavraChave("brodis"));
+        System.out.println(tarefaController.buscarTarefaPorData(data));
+        System.out.println("-------------------------------------------------------");
+        System.out.println(tarefaController.buscarTarefasPorCategoria(cat2));
+        System.out.println(tarefaController.buscarTarefasPorStatus("nao iniciada"));
+
+        
+        
+        
+
 
 
     }
