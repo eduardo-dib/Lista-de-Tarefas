@@ -9,15 +9,13 @@ public class Tarefa {
     private String titulo;
     private String descricao;
     private LocalDateTime criadoEm;
-    private Categoria categoria;
     private String status;
 
-    public Tarefa(String titulo, String descricao, Categoria categoria) {
+    public Tarefa(String titulo, String descricao) {
         this.id = proximoId++;
         this.titulo = titulo;
         this.descricao = descricao;
         this.criadoEm = LocalDateTime.now();
-        this.categoria = categoria;
         this.status = "Não iniciada";
     }
 
@@ -53,14 +51,6 @@ public class Tarefa {
         this.criadoEm = criadoEm;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -72,6 +62,6 @@ public class Tarefa {
     @Override
     public String toString() {
         return "\nTarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", criadoEm=" + criadoEm
-                + ", categoria=" + categoria.getNome() + ", status=" + status + "]";
+                + ", categoria=" + ", status=" + status + "]";
     }
 }
